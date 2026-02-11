@@ -1,10 +1,13 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import dynamic from "next/dynamic";
 import { Header } from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
 import { CardList } from "@/components/CardList";
 import { sampleCards } from "@/data/sampleCards";
+
+const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -88,6 +91,13 @@ export default function Home() {
 
         <SearchBar value={searchQuery} onChange={setSearchQuery} />
         
+        <div style={{ marginBottom: "2rem" }}>
+           <h2 style={{ fontSize: "1.2rem", marginBottom: "1rem", color: "var(--foreground)" }}>
+             配布場所マップ
+           </h2>
+           <MapView cards={filteredCards} />
+        </div>
+
         <CardList 
           cards={filteredCards} 
           collectedIds={collectedIds} 
