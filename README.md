@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# マンホールカード収集アプリ (Manhole Card Collector)
 
-## Getting Started
+マンホールカードコレクターのためのWebアプリケーションです。
+全国のマンホールカードを検索・閲覧し、自身の収集状況（所持/未所持）を管理することができます。
 
-First, run the development server:
+## 主な機能
+
+- **カード一覧表示**: 美しいマンホールカードのデザインをグリッド形式で閲覧できます。
+- **詳細情報確認**: 各カードの配布場所、配布時間、座標情報などを確認できます。
+- **検索・フィルタリング**: 都道府県や市町村名でカードを検索できます。
+- **収集管理**: 「所持」ボタンで収集状況を記録し、ブラウザ（LocalStorage）に保存します。収集率も自動計算されます。
+
+## 必要条件
+
+- Node.js (v18以上推奨)
+- npm (Node.jsに同梱)
+
+## セットアップ手順
+
+プロジェクトのディレクトリに移動し、以下のコマンドで依存パッケージをインストールしてください。
+
+```bash
+npm install
+```
+
+## 起動方法
+
+開発サーバーを起動するには以下のコマンドを実行します。
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+コマンド実行後、ブラウザで [http://localhost:3000](http://localhost:3000) にアクセスするとアプリが表示されます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+もしポート3000が既に使用されている場合は、以下のようにポートを指定して起動してください。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev -- -p 3001
+```
 
-## Learn More
+## 技術スタック
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework**: Next.js (App Router)
+- **Language**: TypeScript
+- **Styling**: Vanilla CSS (CSS Modules / Global CSS)
+- **Deployment**: Vercel (推奨)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 特記事項
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **画像データについて**: 本アプリで使用しているマンホールカードの画像は、権利関係を考慮し、AIによって生成されたイメージ画像（サンプル）を使用しています。実在のデザインとは異なりますのでご了承ください。
+- **データソース**: カード情報は「下水道広報プラットホーム（GKP）」の公開情報を参考に作成したサンプルデータを使用しています。
 
-## Deploy on Vercel
+## ライセンス
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
