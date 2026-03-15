@@ -1,12 +1,12 @@
 export interface ManholeCard {
-  id: string;
-  prefecture: string;
-  city: string;
-  round: string;
-  coordinates: string; // e.g. "35°41'22.1\"N 139°41'30.2\"E"
-  imageUrl: string;
-  distributionLocation: string;
-  distributionTime: string;
-  publicationDate: string;
-  isCollected?: boolean; // Local state for collection
+    id: string; // e.g., "13-101-A001" or a custom internal ID
+    prefecture: string; // "東京都"
+    city: string; // "千代田区"
+    edition: string; // "第1弾"
+    imageUrl?: string;
+    remoteImageUrl?: string;
+}
+
+export interface CollectionState {
+    [cardId: string]: boolean; // true if collected
 }
