@@ -1,0 +1,23 @@
+# =============================================================================
+# Terraform変数の設定例
+# このファイルをコピーして terraform.tfvars を作成してください
+# ※ terraform.tfvars は .gitignore に含まれます（機密情報を含むため）
+# =============================================================================
+
+# GCPプロジェクトID（グローバルで一意である必要があります）
+project_id = "manhole-card-collector-xxx"
+
+# GCPプロジェクトの表示名
+project_name = "Manhole Card Collector"
+
+# Firestoreのリージョン（東京）
+region = "asia-northeast1"
+
+# Billing Account ID（GCPコンソール → 請求 → アカウント管理 で確認）
+billing_account = "XXXXXX-XXXXXX-XXXXXX"
+
+# 月額予算上限（JPY）
+budget_amount = 1000
+
+# 予算アラートの通知先メールアドレス
+alert_email = "your-email@example.com"

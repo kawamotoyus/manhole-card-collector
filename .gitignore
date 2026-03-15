@@ -10,6 +10,7 @@ node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
@@ -24,3 +25,8 @@ dist-ssr
 
 # legacy files (do not push to remote)
 /legacy/
+
+# 環境変数ファイル（Firebase設定等のシークレット）
+.env
+.env.*
+!.env.example

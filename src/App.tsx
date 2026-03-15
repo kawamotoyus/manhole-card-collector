@@ -3,7 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useCollection } from './hooks/useCollection';
 import scrapedCards from './data/scraped_cards.json';
 import { CardItem } from './components/CardItem';
-import { MapPin, LayoutGrid, CheckCircle2, CircleDashed, Search } from 'lucide-react';
+import LoginPage from './components/LoginPage';
+import UserMenu from './components/UserMenu';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { MapPin, LayoutGrid, CheckCircle2, CircleDashed, Search, Loader2 } from 'lucide-react';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -13,7 +16,10 @@ function cn(...inputs: (string | undefined | null | false)[]) {
     return twMerge(clsx(inputs));
 }
 
-const App: React.FC = () => {
+/**
+ * メインアプリコンテンツ（認証済みユーザー向け）
+ */
+const AppContent: React.FC = () => {
     const { collection, toggleCollection } = useCollection();
     const [filter, setFilter] = useState<'all' | 'collected' | 'uncollected'>('all');
     const [searchQuery, setSearchQuery] = useState('');
@@ -60,6 +66,8 @@ const App: React.FC = () => {
                         >
                             <MapPin size={14} />
                             <span>Japan Manhole Cards</span>
+                            {/* ユーザーメニュー（プロフィール画像 + ログアウト） */}
+                            <UserMenu />
                         </motion.div>
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
@@ -182,6 +190,43 @@ const App: React.FC = () => {
             </div>
         </div>
     );
+};
+
+/**
+ * ルートAppコンポーネント
+ * AuthProviderで全体をラップし、認証状態に応じてLoginPageかAppContentを表示
+ */
+const App: React.FC = () => {
+    return (
+        <AuthProvider>
+            <AuthGate />
+        </AuthProvider>
+    );
+};
+
+/**
+ * 認証ゲートコンポーネント
+ * ログイン状態に応じて表示を切り替える
+ */
+const AuthGate: React.FC = () => {
+    const { user, loading } = useAuth();
+
+    // 認証状態の読み込み中
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-[#111116] flex items-center justify-center">
+                <Loader2 className="w-8 h-8 text-blue-400 animate-spin" />
+            </div>
+        );
+    }
+
+    // 未ログイン → ログイン画面を表示
+    if (!user) {
+        return <LoginPage />;
+    }
+
+    // ログイン済み → メインコンテンツ
+    return <AppContent />;
 };
 
 export default App;

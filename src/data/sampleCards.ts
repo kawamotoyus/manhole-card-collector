@@ -1,4 +1,4 @@
-import { ManholeCard } from '../types/Card';
+import { ManholeCard } from '../types/card';
 
 export const SAMPLE_CARDS: ManholeCard[] = [
     {

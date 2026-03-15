@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ManholeCard } from '../types/Card';
+import { ManholeCard } from '../types/card';
 import { Check, Plus, Image as ImageIcon } from 'lucide-react';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
