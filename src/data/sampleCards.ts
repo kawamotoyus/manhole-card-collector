@@ -1,59 +1,45 @@
-import { ManholeCard } from "@/types/card";
+import { ManholeCard } from '../types/Card';
 
-export const sampleCards: ManholeCard[] = [
-  {
-    id: "01-100-A001",
-    prefecture: "北海道",
-    city: "札幌市",
-    round: "第1弾",
-    coordinates: "43°03'43.5\"N 141°21'15.8\"E",
-    imageUrl: "/images/hokkaido_sapporo_A001.jpg",
-    distributionLocation: "札幌市下水道科学館",
-    distributionTime: "9:30～17:00（入館は16:30まで）\n休日：月曜日（祝日の場合は翌平日）、年末年始（12/29～1/3）",
-    publicationDate: "2016/04/01",
-  },
-  {
-    id: "13-101-A001",
-    prefecture: "東京都",
-    city: "千代田区",
-    round: "第1弾",
-    coordinates: "35°41'22.1\"N 139°41'30.2\"E",
-    imageUrl: "/images/tokyo_23ku_A001.jpg",
-    distributionLocation: "千代田区観光案内所",
-    distributionTime: "10:00～18:00\n休日：第4日曜日、年末年始",
-    publicationDate: "2016/04/01",
-  },
-  {
-    id: "14-100-A001",
-    prefecture: "神奈川県",
-    city: "横浜市",
-    round: "第1弾",
-    coordinates: "35°26'37.6\"N 139°38'09.4\"E",
-    imageUrl: "/images/kanagawa_yokohama_A001.jpg",
-    distributionLocation: "横浜駅観光案内所",
-    distributionTime: "9:00～19:00\n休日：無休",
-    publicationDate: "2016/04/01",
-  },
-  {
-    id: "27-100-A001",
-    prefecture: "大阪府",
-    city: "大阪市",
-    round: "第1弾",
-    coordinates: "34°41'58.2\"N 135°30'03.6\"E",
-    imageUrl: "/images/osaka_osaka_A001.jpg",
-    distributionLocation: "大阪市下水道科学館",
-    distributionTime: "9:30～17:00（入館は16:30まで）\n休日：月曜日（祝日の場合は翌平日）、年末年始",
-    publicationDate: "2016/04/01",
-  },
-   {
-    id: "40-130-A001",
-    prefecture: "福岡県",
-    city: "北九州市",
-    round: "第1弾",
-    coordinates: "33°53'01.9\"N 130°52'31.6\"E",
-    imageUrl: "/images/fukuoka_kitakyushu_A001.jpg",
-    distributionLocation: "北九州市北橋観光案内所",
-    distributionTime: "9:00～18:00\n休日：無休",
-    publicationDate: "2016/04/01",
-  }
+export const SAMPLE_CARDS: ManholeCard[] = [
+    {
+        id: "13-101-A001",
+        prefecture: "東京都",
+        city: "千代田区",
+        edition: "第1弾",
+        imageUrl: "/images/manhole_tokyo_chiyoda_1773060852611.png"
+    },
+    {
+        id: "14-100-A001",
+        prefecture: "神奈川県",
+        city: "横浜市",
+        edition: "第1弾",
+        imageUrl: "/images/manhole_yokohama_1773060866719.png"
+    },
+    {
+        id: "27-100-A001",
+        prefecture: "大阪府",
+        city: "大阪市",
+        edition: "第1弾",
+        imageUrl: "/images/manhole_osaka_1773060882868.png"
+    },
+    {
+        id: "13-102-A001",
+        prefecture: "東京都",
+        city: "中央区",
+        edition: "第2弾",
+        imageUrl: "https://images.unsplash.com/photo-1594191316650-dd89225f208a?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: "11-201-A001",
+        prefecture: "埼玉県",
+        city: "川越市",
+        edition: "第1弾",
+        imageUrl: "https://images.unsplash.com/photo-1582293425574-8b65ff799981?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: "01-100-A001",
+        prefecture: "北海道",
+        city: "札幌市",
+        edition: "第3弾"
+    }
 ];
