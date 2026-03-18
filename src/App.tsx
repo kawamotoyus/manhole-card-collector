@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCollection } from './hooks/useCollection';
 import scrapedCards from './data/scraped_cards.json';
@@ -210,12 +210,28 @@ const App: React.FC = () => {
  */
 const AuthGate: React.FC = () => {
     const { user, loading } = useAuth();
+    const [timedOut, setTimedOut] = useState(false);
+
+    useEffect(() => {
+        if (loading) {
+            const timer = setTimeout(() => {
+                console.error("[AuthGate] Auth loading timed out after 10s");
+                setTimedOut(true);
+            }, 10000);
+            return () => clearTimeout(timer);
+        }
+    }, [loading]);
 
     // 認証状態の読み込み中
     if (loading) {
         return (
-            <div className="min-h-screen bg-[#111116] flex items-center justify-center">
+            <div className="min-h-screen bg-[#111116] flex flex-col items-center justify-center gap-4">
                 <Loader2 className="w-8 h-8 text-blue-400 animate-spin" />
+                {timedOut && (
+                    <div className="text-white/60 text-sm animate-pulse">
+                        初期化に時間がかかっています。ネットワーク設定やFirebase設定を確認してください。
+                    </div>
+                )}
             </div>
         );
     }

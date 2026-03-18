@@ -18,6 +18,10 @@ const firebaseConfig = {
 };
 
 // Firebaseアプリの初期化
+console.log("[Firebase] Initializing app with config:", {
+  ...firebaseConfig,
+  apiKey: firebaseConfig.apiKey ? "***" : "MISSING"
+});
 const app = initializeApp(firebaseConfig);
 
 // Firebase Authenticationインスタンス

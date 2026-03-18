@@ -3,6 +3,9 @@
 全国のマンホールカードをコレクション・管理するためのモダンなWebアプリケーションです。
 公式サイトから取得した最新の正確なデータに基づき、美しいUIでカードの収集状況を管理できます。
 
+### 🌍 公開サイト
+**[https://manhole-card-collector.web.app](https://manhole-card-collector.web.app)**
+
 ## 🌟 主な特徴
 
 - **正確なデータ**: 公式サイトを直接スクレイピングすることで、全1,222件（現時点）の正確な都道府県・自治体情報・弾数を反映。
@@ -15,8 +18,9 @@
 
 - **Frontend**: React 19, Vite, TypeScript
 - **Styling**: Tailwind CSS, Framer Motion, Lucide React
+- **Backend/Infra**: Firebase (Hosting, Auth, Firestore), Terraform
+- **CI/CD**: GitHub Actions
 - **Data Scraping**: Python (BeautifulSoup)
-- **Deployment**: Vite (Base configuration ready)
 
 ## 🛠 セットアップと実行
 
