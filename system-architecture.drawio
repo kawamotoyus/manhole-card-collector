@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    
+    <!-- GCP Project Container -->
+    <mxCell id="gcp_project" value="GCP Project: manhole-card-collector" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#E8F0FE;strokeColor=#4285F4;fontStyle=1;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="160" y="80" width="600" height="440" as="geometry" />
+    </mxCell>
+    
+    <!-- Firebase Project Container -->
+    <mxCell id="firebase_project" value="Firebase Project" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#FFF4E5;strokeColor=#FF9800;dashed=1;rounded=1;" vertex="1" parent="gcp_project">
+      <mxGeometry x="40" y="50" width="520" height="360" as="geometry" />
+    </mxCell>
+    
+    <!-- Firebase Hosting -->
+    <mxCell id="hosting" value="Firebase Hosting" style="shape=mxgraph.gcp2.firebase_hosting;fillColor=#4285F4;gradientColor=none;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;" vertex="1" parent="firebase_project">
+      <mxGeometry x="60" y="60" width="80" height="80" as="geometry" />
+    </mxCell>
+    
+    <!-- Firebase Authentication -->
+    <mxCell id="auth" value="Firebase Authentication&#xa;(Google Auth)" style="shape=mxgraph.gcp2.authentication;fillColor=#4285F4;gradientColor=none;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;" vertex="1" parent="firebase_project">
+      <mxGeometry x="280" y="60" width="80" height="80" as="geometry" />
+    </mxCell>
+    
+    <!-- Cloud Firestore -->
+    <mxCell id="firestore" value="Cloud Firestore&#xa;(Native Mode)" style="shape=mxgraph.gcp2.firestore;fillColor=#4285F4;gradientColor=none;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;" vertex="1" parent="firebase_project">
+      <mxGeometry x="140" y="220" width="80" height="80" as="geometry" />
+    </mxCell>
+    
+    <!-- Billing Budget (GCP Level) -->
+    <mxCell id="budget" value="Cloud Billing Budget&#xa;(Monthly Alert)" style="shape=mxgraph.gcp2.cloud_billing;fillColor=#4285F4;gradientColor=none;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;" vertex="1" parent="gcp_project">
+      <mxGeometry x="420" y="300" width="80" height="80" as="geometry" />
+    </mxCell>
+    
+    <!-- External: User -->
+    <mxCell id="user" value="User (Web Browser)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="40" y="160" width="30" height="60" as="geometry" />
+    </mxCell>
+    
+    <!-- Connections -->
+    
+    <!-- User to Hosting (HTTPS) -->
+    <mxCell id="edge1" value="Access App (HTTPS)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;orthogonalLoop=1;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="user" target="hosting">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    
+    <!-- User to Auth (Login) -->
+    <mxCell id="edge2" value="Google Login" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;orthogonalLoop=1;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="user" target="auth">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="100" y="180" />
+          <mxPoint x="100" y="40" />
+          <mxPoint x="480" y="40" />
+          <mxPoint x="480" y="180" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    
+    <!-- React App to Firestore -->
+    <mxCell id="edge3" value="Data Sync (SDK)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;orthogonalLoop=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="hosting" target="firestore">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    
+    <!-- Firestore Security Rules -->
+    <mxCell id="rules_note" value="Firestore Security Rules:&#xa;- User isolation&#xa;- Own data only" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="firebase_project">
+      <mxGeometry x="320" y="220" width="160" height="80" as="geometry" />
+    </mxCell>
+    
+    <mxCell id="edge4" value="" style="endArrow=none;dashed=1;html=1;rounded=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="firestore" target="rules_note">
+      <mxGeometry width="50" height="50" relative="1" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>

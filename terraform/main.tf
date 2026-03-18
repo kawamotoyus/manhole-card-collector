@@ -22,13 +22,17 @@ terraform {
 # プロバイダー設定
 # -----------------------------------------------------------------------------
 provider "google" {
-  project = var.project_id
-  region  = var.region
+  project               = var.project_id
+  region                = var.region
+  billing_project       = var.project_id
+  user_project_override = true
 }
 
 provider "google-beta" {
-  project = var.project_id
-  region  = var.region
+  project               = var.project_id
+  region                = var.region
+  billing_project       = var.project_id
+  user_project_override = true
 }
 
 # -----------------------------------------------------------------------------
@@ -212,22 +216,7 @@ resource "google_identity_platform_config" "default" {
     google_project_service.identity_toolkit,
     google_firebase_project.default,
   ]
-}
-
-# Google認証プロバイダーの有効化
-resource "google_identity_platform_default_supported_idp_config" "google" {
-  provider = google-beta
-  project  = google_project.default.project_id
-
-  idp_id    = "google.com"
-  client_id = data.google_firebase_web_app_config.default.oauth_client_id
-  # client_secret はOAuthクライアント作成後に手動で設定する場合あり
-  client_secret = "placeholder"
-
-  depends_on = [google_identity_platform_config.default]
-}
-
-# -----------------------------------------------------------------------------
+}# -----------------------------------------------------------------------------
 # 予算アラート（月額1,000円上限）
 # -----------------------------------------------------------------------------
 resource "google_billing_budget" "monthly" {

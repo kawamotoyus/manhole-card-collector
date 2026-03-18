@@ -11,6 +11,8 @@ dist
 dist-ssr
 *.local
 *.tsbuildinfo
+.venv
+scripts/.venv
 
 # Editor directories and files
 .vscode/*
@@ -30,3 +32,16 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Terraform関連
+.terraform/
+*.tfstate
+*.tfstate.backup
+terraform.tfvars
+terraform.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
