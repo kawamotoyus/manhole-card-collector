@@ -35,9 +35,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Firebase Authの状態変化を監視
   useEffect(() => {
-    console.log("[AuthContext] Setting up onAuthStateChanged...");
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("[AuthContext] Auth state changed:", currentUser ? `Logged in (${currentUser.uid})` : "Logged out");
       setUser(currentUser);
       setLoading(false);
     }, (error) => {

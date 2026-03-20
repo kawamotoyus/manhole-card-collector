@@ -77,7 +77,23 @@ graph TD
 
 ---
 
-## 5. 運用と管理
+---
+
+## 5. CI/CD との開発統合
+
+本プロジェクトのインフラは、GitHub Actions による自動デプロイパイプラインと密接に連携しています。
+
+### サービスアカウントと権限
+GitHub Actions が Firebase Hosting へ安全にデプロイするために、最小権限の原則に基づいた専用の **Service Account** を Terraform もしくは Google Cloud コンソールで作成し、以下のシークレットを GitHub リポジトリに登録しています。
+
+### 必要な GitHub Secrets
+デプロイを正常に機能させるために、以下のシークレット（またはリポジトリ変数）の登録が必要です：
+*   **`FIREBASE_SERVICE_ACCOUNT`**: Firebase デプロイ用サービスアカウントの JSON キー。
+*   **`VITE_FIREBASE_API_KEY`** 等: フロントエンドのアプリ初期化に必要な構成情報（`terraform output -json` から取得可能）。
+
+---
+
+## 6. 運用と管理
 
 ### 基本的なワークフロー
 1.  **初期化**: `terraform init` でプラグインをダウンロードします。
@@ -85,5 +101,6 @@ graph TD
 3.  **反映**: `terraform apply` で実際のインフラを構築します。
 
 ### 注意事項
-*   **機密情報**: `terraform.tfvars` には Billing Account ID などの機密情報が含まれるため、Git にはコミットせず、`terraform.tfvars.example` を参考にローカルで作成してください。
-*   **課金について**: 本構成は無料枠を最大限活用するよう設計されていますが、予算アラートの設定により安全性を高めています。
+*   **機密情報**: `terraform.tfvars` には Billing Account ID などの機密情報が含まれるため、Git にはコミットしないでください。
+*   **課金について**: 本構成は無料枠を最大限活用するよう設計されていますが、予算アラート（`google_billing_budget`）の設定により安全性を高めています。
+
